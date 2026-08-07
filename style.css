@@ -1,0 +1,498 @@
+/* ===== 全局变量 ===== */
+:root {
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --bg-card-hover: #334155;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+
+/* ===== 基础重置 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.1) 0%, transparent 40%);
+}
+
+a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ===== 容器 ===== */
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* ===== 头部 ===== */
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 0.6s ease;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-light), #c4b5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.stats {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.stats span {
+    background: var(--bg-card);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* ===== 表单区域 ===== */
+.form-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.form-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+
+/* ===== 按钮 ===== */
+.form-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.btn-submit,
+.btn-reset,
+.btn-load-more {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    flex: 1;
+}
+
+.btn-submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-reset {
+    background: var(--bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.btn-reset:hover {
+    background: var(--bg-card-hover);
+    color: var(--text);
+}
+
+.btn-load-more {
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    width: 100%;
+    padding: 0.8rem;
+}
+
+.btn-load-more:hover {
+    background: var(--bg-card-hover);
+}
+
+/* ===== 状态提示 ===== */
+.form-status {
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.form-status.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.form-status.info {
+    display: block;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary-light);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* ===== 留言列表 ===== */
+.messages-section {
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.3rem;
+}
+
+.sort-tabs {
+    display: flex;
+    gap: 0.3rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 0.2rem;
+    border: 1px solid var(--border);
+}
+
+.sort-btn {
+    padding: 0.4rem 0.9rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.sort-btn.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.sort-btn:hover:not(.active) {
+    color: var(--text);
+}
+
+/* ===== 留言卡片 ===== */
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.message-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    transition: var(--transition);
+    animation: fadeIn 0.4s ease;
+}
+
+.message-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.15);
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.message-meta {
+    flex: 1;
+    min-width: 0;
+}
+
+.message-author {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.message-time {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.message-body {
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.message-footer {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.message-footer a:hover {
+    text-decoration: none;
+}
+
+/* ===== 加载 & 空状态 ===== */
+.loading, .empty-state, .error-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.load-more-container {
+    margin-top: 1.2rem;
+}
+
+/* ===== 弹窗 ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--text);
+}
+
+.modal-content h2 {
+    margin-bottom: 0.8rem;
+}
+
+.config-tip {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.config-tip small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ===== 页脚 ===== */
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ===== 动画 ===== */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit, .btn-reset {
+        width: 100%;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
