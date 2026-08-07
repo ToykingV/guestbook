@@ -18,9 +18,9 @@
 
     /* ---------- 默认配置（可修改） ---------- */
     const DEFAULT_CONFIG = {
-        owner: 'toyking',      // GitHub 用户名
-        repo: 'guestbook',       // 仓库名
-        token: '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',      // GitHub Token（可选）
+        owner: '',      // GitHub 用户名
+        repo: '',       // 仓库名
+        token: '',      // GitHub Token（可选）
     };
 
     /* ---------- 工具函数 ---------- */
