@@ -18,8 +18,8 @@
 
     /* ---------- 默认配置（可修改） ---------- */
     const DEFAULT_CONFIG = {
-        owner: '',      // GitHub 用户名
-        repo: '',       // 仓库名
+        owner: 'toykingv',      // GitHub 用户名
+        repo: 'guestbook',       // 仓库名
         token: '',      // GitHub Token（可选）
     };
 
